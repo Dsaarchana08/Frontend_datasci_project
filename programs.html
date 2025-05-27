@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Programs</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; background-color: #f9fafb; }
+    header { background-color: #1f2937; color: white; padding: 1rem; display: flex; justify-content: space-between; align-items: center; }
+    header h1 { margin: 0; font-size: 1.5rem; }
+    nav a { color: white; margin-right: 1rem; text-decoration: none; }
+    .container { padding: 2rem; }
+    .card { background: white; padding: 1rem 2rem; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); max-width: 700px; margin: auto; }
+    .search-bar { margin-bottom: 1rem; }
+    input[type="text"] { padding: 0.5rem; width: 100%; box-sizing: border-box; }
+    table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+    th, td { padding: 0.75rem; border-bottom: 1px solid #e5e7eb; text-align: left; }
+    .form-section { margin-top: 2rem; }
+    button { padding: 0.5rem 1rem; background-color: #1d4ed8; color: white; border: none; border-radius: 4px; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Credit Pathway</h1>
+    <nav>
+      <a href="#">Programs</a>
+      <a href="courses.html">Courses</a>
+      <a href="#">Pathways</a>
+      <a href="#">Upload</a>
+    </nav>
+  </header>
+  <div class="container">
+    <div class="card">
+      <h2>Programs</h2>
+      <div class="search-bar">
+        <input type="text" placeholder="Search programs...">
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Program Code</th>
+            <th>Program Name</th>
+            <th>Plans</th>
+          </tr>
+        </thead>
+        <tbody id="programTableBody"></tbody>
+      </table>
+      <div class="form-section">
+        <h3>Add Program</h3>
+        <input type="text" id="code" placeholder="Program Code"><br><br>
+        <input type="text" id="name" placeholder="Program Name"><br><br>
+        <input type="text" id="plans" placeholder="Plans"><br><br>
+        <button onclick="addProgram()">Add Program</button>
+      </div>
+    </div>
+  </div>
+  <script>
+    function addProgram() {
+      const code = document.getElementById('code').value;
+      const name = document.getElementById('name').value;
+      const plans = document.getElementById('plans').value;
+      const row = `<tr><td>${code}</td><td>${name}</td><td>${plans}</td></tr>`;
+      document.getElementById('programTableBody').innerHTML += row;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Courses</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; background-color: #f9fafb; }
+    header { background-color: #1f2937; color: white; padding: 1rem; display: flex; justify-content: space-between; align-items: center; }
+    header h1 { margin: 0; font-size: 1.5rem; }
+    nav a { color: white; margin-right: 1rem; text-decoration: none; }
+    .container { padding: 2rem; }
+    .card { background: white; padding: 1rem 2rem; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); max-width: 800px; margin: auto; }
+    .search-bar { margin-bottom: 1rem; }
+    input[type="text"] { padding: 0.5rem; width: 100%; box-sizing: border-box; }
+    table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+    th, td { padding: 0.75rem; border-bottom: 1px solid #e5e7eb; text-align: left; }
+    .form-section { margin-top: 2rem; }
+    button { padding: 0.5rem 1rem; background-color: #1d4ed8; color: white; border: none; border-radius: 4px; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Credit Pathway</h1>
+    <nav>
+      <a href="programs.html">Programs</a>
+      <a href="#">Courses</a>
+      <a href="#">Pathways</a>
+      <a href="#">Upload</a>
+    </nav>
+  </header>
+  <div class="container">
+    <div class="card">
+      <h2>Courses</h2>
+      <div class="search-bar">
+        <input type="text" placeholder="Filter by program or plan">
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Course Code</th>
+            <th>Course Name</th>
+            <th>Plan Code</th>
+          </tr>
+        </thead>
+        <tbody id="courseTableBody"></tbody>
+      </table>
+      <div class="form-section">
+        <h3>Add Course</h3>
+        <input type="text" id="ccode" placeholder="Course Code"><br><br>
+        <input type="text" id="cname" placeholder="Course Name"><br><br>
+        <input type="text" id="pcode" placeholder="Plan Code"><br><br>
+        <button onclick="addCourse()">Add Course</button>
+      </div>
+    </div>
+  </div>
+  <script>
+    function addCourse() {
+      const ccode = document.getElementById('ccode').value;
+      const cname = document.getElementById('cname').value;
+      const pcode = document.getElementById('pcode').value;
+      const row = `<tr><td>${ccode}</td><td>${cname}</td><td>${pcode}</td></tr>`;
+      document.getElementById('courseTableBody').innerHTML += row;
+    }
+  </script>
+</body>
+</html>
