@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pathways</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; background-color: #f9fafb; }
+    header { background-color: #1f2937; color: white; padding: 1rem; display: flex; justify-content: space-between; align-items: center; }
+    header h1 { margin: 0; font-size: 1.5rem; }
+    nav a { color: white; margin-right: 1rem; text-decoration: none; }
+    .container { padding: 2rem; }
+    .card { background: white; padding: 1rem 2rem; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); max-width: 700px; margin: auto; }
+    table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+    th, td { padding: 0.75rem; border-bottom: 1px solid #e5e7eb; text-align: left; }
+    .form-section { margin-top: 2rem; }
+    input[type="text"] { padding: 0.5rem; width: 100%; box-sizing: border-box; margin-bottom: 0.75rem; }
+    button { padding: 0.5rem 1rem; background-color: #1d4ed8; color: white; border: none; border-radius: 4px; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Credit Pathway</h1>
+    <nav>
+      <a href="programs.html">Programs</a>
+      <a href="courses.html">Courses</a>
+      <a href="#">Pathways</a>
+      <a href="#">Upload</a>
+    </nav>
+  </header>
+  <div class="container">
+    <div class="card">
+      <h2>Pathways</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Pathway Name</th>
+            <th>From Program</th>
+            <th>To Program</th>
+          </tr>
+        </thead>
+        <tbody id="pathwayTableBody"></tbody>
+      </table>
+      <div class="form-section">
+        <h3>Add Pathway</h3>
+        <input type="text" id="pathway" placeholder="Pathway Name">
+        <input type="text" id="fromProgram" placeholder="From Program">
+        <input type="text" id="toProgram" placeholder="To Program">
+        <button onclick="addPathway()">Add Pathway</button>
+      </div>
+    </div>
+  </div>
+  <script>
+    function addPathway() {
+      const pathway = document.getElementById('pathway').value;
+      const from = document.getElementById('fromProgram').value;
+      const to = document.getElementById('toProgram').value;
+      const row = <tr><td>${pathway}</td><td>${from}</td><td>${to}</td></tr>;
+      document.getElementById('pathwayTableBody').innerHTML += row;
+    }
+  </script>
+</body>
+</html>
