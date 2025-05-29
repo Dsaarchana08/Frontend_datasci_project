@@ -18,10 +18,10 @@ document.getElementById('loginForm').addEventListener('submit', function(e) {
     // Redirect based on role
     switch (matchedUser.role) {
       case 'Admission Team':
-        window.location.href = 'admin-dashboard.html';
+        window.location.href = 'overview.html';
         break;
       case 'Pathway Team':
-        window.location.href = 'master-table.html';
+        window.location.href = 'pathway.html';
         break;
       case 'College Staff':
         window.location.href = 'upload.html';
