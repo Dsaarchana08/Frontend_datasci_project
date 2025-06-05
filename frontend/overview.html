@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Overview</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="logout.js"></script>
+  <script defer src="overview.js"></script>
+  <style>
+    footer {
+        background: #f0f0f0;
+        padding: 1rem;
+        text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <img class="logo" src="rmit_logo.png" alt="RMIT Logo" />
+      <div class="header-right">
+        <nav>
+          <ul class="nav-links">
+            <li><a href="overview.html">Dashboard</a></li>
+            <li><a href="programs.html">Programs</a></li>
+            <li><a href="courses.html">Courses</a></li>
+            <li><a href="pathway.html">Pathways</a></li>
+            <li><a href="upload.html">Upload CARF</a></li>
+          </ul>
+        </nav>
+        <button id="logoutBtn" class="logout-btn">Logout</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="overview-container">
+    <section class="overview-section">
+      <h2>Overview</h2>
+      <div class="overview-cards">
+        <div class="card">
+          <h3 id="program-count">0</h3>
+          <p>Programs</p>
+        </div>
+        <div class="card">
+          <h3 id="pathway-count">0</h3>
+          <p>Pathways</p>
+        </div>
+        <div class="card">
+          <h3 id="mapping-count">0</h3>
+          <p>Mappings</p>
+        </div>
+        <div class="card">
+          <h3 id="user-count">0</h3>
+          <p>Accessing</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="recent-updates">
+      <h2>Recent Pathway Updates</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Pathway</th>
+            <th>Version Uploaded</th>
+            <th>Last Updated</th>
+          </tr>
+        </thead>
+        <tbody id="recent-updates-body">
+          <!-- JS will populate recent updates here -->
+        </tbody>
+      </table>
+    </section>
+  </div>
+
+  <footer>
+    <div class="footer-container">
+      <p>&copy; 2025 RMIT University. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
