@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Upload CARF Form</title>
+  <link rel="stylesheet" href="styles.css" />
+  <!-- Font Awesome for upload icon -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    integrity="sha512-Fo3rlrZj/k7ujTTXRNkP2C1oE5RvcrvlY4PQ8lFeXx8tJt6eZ7UOjEgMQEjJk4zGPa1vTC5jKf2RlXxA38rXpg=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  <script defer src="upload.js"></script>
+  <script defer src="logout.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    h2 {
+      text-align: center;
+      margin-top: 1.5rem;
+    }
+    .custom-alert {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+    padding: 1rem 1.5rem;
+    border-radius: 6px;
+    color: white;
+    font-size: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    animation: fadeInOut 5s ease forwards;
+    }
+
+    /* Specific types */
+    .custom-alert.success {
+    background-color: #28a745; /* green */
+    }
+
+    .custom-alert.error {
+    background-color: #dc3545; /* red */
+    }
+
+    .custom-alert.info {
+    background-color: #007bff; /* blue */
+    }
+
+    @keyframes fadeInOut {
+    0% { opacity: 0; transform: translate(-50%, -10px); }
+    10%, 90% { opacity: 1; transform: translate(-50%, 0); }
+    100% { opacity: 0; transform: translate(-50%, -10px); }
+    }
+    .upload-container {
+      max-width: 400px;
+      margin: 2rem auto;
+      padding: 2rem;
+      border: 2px dashed #ccc;
+      border-radius: 8px;
+      text-align: center;
+      cursor: pointer;
+      transition: background-color 0.3s, border-color 0.3s;
+      user-select: none;
+    }
+    .upload-container.dragover {
+      border-color: #007bff;
+      background-color: #f0f8ff;
+    }
+    .upload-label {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: #666;
+      font-size: 1.1rem;
+      gap: 0.5rem;
+    }
+    .upload-label i {
+      font-size: 3rem;
+      color: #007bff;
+    }
+    #fileInput {
+      display: none;
+    }
+    button[type="submit"] {
+      margin-top: 1rem;
+      padding: 0.7rem 1.5rem;
+      font-size: 1rem;
+      background-color: #007bff;
+      border: none;
+      color: white;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+    button[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+    .upload-status {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: #333;
+      min-height: 1.2em;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <img class="logo" src="rmit_logo.png" alt="RMIT Logo" />
+      <div class="header-right">
+        <nav>
+          <ul class="nav-links">
+            <li><a href="overview.html">Dashboard</a></li>
+            <li><a href="programs.html">Programs</a></li>
+            <li><a href="courses.html">Courses</a></li>
+            <li><a href="pathway.html">Pathways</a></li>
+            <li><a href="upload.html" class="active">Upload CARF</a></li>
+          </ul>
+        </nav>
+        <button id="logoutBtn" class="logout-btn">Logout</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <h2>Upload CARF Form</h2>
+
+    <form id="uploadForm" class="upload-container" tabindex="0">
+      <label for="fileInput" class="upload-label" aria-describedby="uploadHelp">
+        <i class="fas fa-cloud-upload-alt" aria-hidden="true"></i>
+        <p id="uploadHelp">Drag and drop your CARF file here, or click to select</p>
+      </label>
+      <input
+        type="file"
+        id="fileInput"
+        name="file"
+        accept=".xlsx"
+        required
+        aria-required="true"
+      />
+      <button type="submit">Upload</button>
+      <div class="upload-status" id="uploadStatus" aria-live="polite"></div>
+    </form>
+  </main>
+</body>
+</html>

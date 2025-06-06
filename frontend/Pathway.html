@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Manage Pathways</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="logout.js"></script>
+  <script defer src="pathway.js"></script>
+  <style>
+    footer {
+      background: #f0f0f0;
+      padding: 1rem;
+      text-align: center;
+    }
+    .crud-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    form input, form button, textarea {
+      display: block;
+      width: 100%;
+      margin: 0.5rem 0;
+      padding: 0.5rem;
+      font-size: 1rem;
+    }
+    .button-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .hidden {
+      display: none;
+    }
+    .popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: white;
+      padding: 2rem;
+      border: 2px solid #333;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      z-index: 1000;
+      max-width: 400px;
+      text-align: center;
+    }
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 0.5rem;
+      text-align: left;
+    }
+    th {
+      background-color: #f4f4f4;
+    }
+    .pathway-table {
+      border-collapse: collapse;
+      width: 100%;
+      font-family: Arial, sans-serif;
+      background: #fff;
+      border-radius: 6px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+      margin-bottom: 1.5rem;
+    }
+
+    .pathway-table th,
+    .pathway-table td {
+      border: 1px solid #ddd;
+      padding: 8px 12px;
+    }
+
+    .pathway-table th {
+      background-color: #f0f0f0;
+      text-align: left;
+      font-weight: 600;
+      color: #444;
+    }
+
+    .pathway-table td {
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <img class="logo" src="rmit_logo.png" alt="RMIT Logo" />
+      <div class="header-right">
+        <nav>
+          <ul class="nav-links">
+            <li><a href="overview.html">Dashboard</a></li>
+            <li><a href="programs.html">Programs</a></li>
+            <li><a href="courses.html">Courses</a></li>
+            <li><a href="pathway.html" class="active">Pathways</a></li>
+            <li><a href="upload.html">Upload CARF</a></li>
+          </ul>
+        </nav>
+        <button id="logoutBtn" class="logout-btn">Logout</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="crud-container">
+    <h2>Manage Pathways</h2>
+
+    <!-- Recent Pathways Section -->
+    <section id="recentPathwaysSection">
+      <h3>Recent Pathways</h3>
+      <table class="pathway-table" id="recentPathwaysTable">
+        <thead>
+          <tr>
+            <th>Source Plan Code</th>
+            <th>Destination Plan Code</th>
+            <th>Status</th>
+            <th>Effective Date</th>
+            <th>Version</th>
+          </tr>
+        </thead>
+        <tbody id="recentPathwaysBody">
+          <tr><td colspan="5">Loading...</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Search Section -->
+    <section>
+      <form id="searchPathwayForm">
+        <h3>Search Pathway</h3>
+        <input type="text" placeholder="Source Program Code" id="searchSrcProgram" list="searchSrcProgram_datalist" required />
+        <datalist id="searchSrcProgram_datalist"></datalist>
+
+        <input type="text" placeholder="Source Plan Code" id="searchSrcPlan" list="searchSrcPlan_datalist" required />
+        <datalist id="searchSrcPlan_datalist"></datalist>
+
+        <input type="text" placeholder="Destination Program Code" id="searchDestProgram" list="searchDestProgram_datalist" required />
+        <datalist id="searchDestProgram_datalist"></datalist>
+
+        <input type="text" placeholder="Destination Plan Code" id="searchDestPlan" list="searchDestPlan_datalist" required />
+        <datalist id="searchDestPlan_datalist"></datalist>
+
+        <button type="submit">Search</button>
+      </form>
+
+      <div id="pathwayResult" class="hidden">
+        <h3>Pathway Details</h3>
+        <div id="pathwayDetails"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-container">
+      <p>&copy; 2025 RMIT University. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
